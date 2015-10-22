@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "bin": {
-      "addpage": "./bin/addpage.js"
-   },
+    "addpage": "./bin/addpage.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/yuwancumian/addpage",
   "dependencies": {
+    "cheerio": "^0.19.0",
+    "jsdom": "^7.0.1",
     "shelljs": "^0.5.3"
   }
 }
