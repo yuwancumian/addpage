@@ -3,7 +3,7 @@ require('shelljs/global');
 
 var fs = require('fs');
 var path = require('path');
-var cheerio = require('cheerio');
+var pageName = process.argv[2];
 
 var files = fs.readdirSync('.');
 var html = files.filter(function(item){
@@ -12,6 +12,26 @@ var html = files.filter(function(item){
 
 var all = fs.readFileSync(html[1],'utf-8');
 
-var  $ = cheerio.load(all);
-console.log($(all).find('head').html());
-console.log($('script').html());
+var headElement = all.match(/(<link|<title|<meta).*/g);
+var scriptElement =all.match(/.*<\/script>/g);
+//console.log(headElement);
+var page = pageName + '.html';
+console.log(scriptElement.length)
+
+'<!DOCTYPE html>\n'.to(page);
+'<head>\n'.toEnd(page);
+
+for( var i=0; i< headElement.length; i++){
+	'\t'.toEnd(page);
+	headElement[i].toEnd(page);
+	'\n'.toEnd(page)
+}
+'</head>'.toEnd(page);
+'\n<body>\n'.toEnd(page);
+'\n<body>'.toEnd(page);
+'\n</html>\n'.toEnd(page);
+for( var i=0; i< scriptElement.length; i++){
+	scriptElement[i].toEnd(pageName + '.html');
+	'\n'.toEnd(page)
+}
+
