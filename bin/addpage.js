@@ -10,28 +10,32 @@ var html = files.filter(function(item){
 	return path.extname(item) === '.html';
 });
 
-var all = fs.readFileSync(html[1],'utf-8');
+if (html.length === 0){
+	console.log('No html in the directory!')
+} else {
+	var all = fs.readFileSync(html[1],'utf-8');
 
-var headElement = all.match(/(<link|<title|<meta).*/g);
-var scriptElement =all.match(/.*<\/script>/g);
-//console.log(headElement);
-var page = pageName + '.html';
-console.log(scriptElement.length)
+	var headElement = all.match(/(<link|<title|<meta).*/g);
+	var scriptElement =all.match(/.*<\/script>/g);
+	//console.log(headElement);
+	var page = pageName + '.html';
+	console.log(scriptElement.length)
 
-'<!DOCTYPE html>\n'.to(page);
-'<head>\n'.toEnd(page);
+	'<!DOCTYPE html>\n'.to(page);
+	'<head>\n'.toEnd(page);
 
-for( var i=0; i< headElement.length; i++){
-	'\t'.toEnd(page);
-	headElement[i].toEnd(page);
-	'\n'.toEnd(page)
-}
-'</head>'.toEnd(page);
-'\n<body>\n'.toEnd(page);
-'\n<body>'.toEnd(page);
-'\n</html>\n'.toEnd(page);
-for( var i=0; i< scriptElement.length; i++){
-	scriptElement[i].toEnd(pageName + '.html');
-	'\n'.toEnd(page)
+	for( var i=0; i< headElement.length; i++){
+		'\t'.toEnd(page);
+		headElement[i].toEnd(page);
+		'\n'.toEnd(page)
+	}
+	'</head>'.toEnd(page);
+	'\n<body>\n'.toEnd(page);
+	'\n<body>'.toEnd(page);
+	'\n</html>\n'.toEnd(page);
+	for( var i=0; i< scriptElement.length; i++){
+		scriptElement[i].toEnd(pageName + '.html');
+		'\n'.toEnd(page)
+	}
 }
 
