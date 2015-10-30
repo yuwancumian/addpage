@@ -19,7 +19,7 @@ if (html.length === 0){
 	var scriptElement =all.match(/.*<\/script>/g);
 	//console.log(headElement);
 	var page = pageName + '.html';
-	console.log(scriptElement.length)
+	console.log(pageName + '.html was added!')
 
 	'<!DOCTYPE html>\n'.to(page);
 	'<head>\n'.toEnd(page);
