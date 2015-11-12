@@ -16,8 +16,7 @@ if (html.length === 0){
 	var all = fs.readFileSync(html[0],'utf-8');
 
 	var headElement = all.match(/(<link|<title|<meta).*/g);
-	var scriptElement =all.match(/.*<\/script>/g);
-	//console.log(headElement);
+	var scriptLink =all.match(/<script.*<\/script>/g);
 	var page = pageName + '.html';
 	console.log(pageName + '.html was added!')
 
@@ -33,8 +32,9 @@ if (html.length === 0){
 	'\n<body>\n'.toEnd(page);
 	'\n<body>'.toEnd(page);
 	'\n</html>\n'.toEnd(page);
-	for( var i=0; i< scriptElement.length; i++){
-		scriptElement[i].toEnd(pageName + '.html');
+	
+	for( var i=0; i< scriptLink.length; i++){
+		scriptLink[i].toEnd(pageName + '.html');
 		'\n'.toEnd(page)
 	}
 }
