@@ -13,7 +13,7 @@ var html = files.filter(function(item){
 if (html.length === 0){
 	console.log('No html in the directory!')
 } else {
-	var all = fs.readFileSync(html[1],'utf-8');
+	var all = fs.readFileSync(html[0],'utf-8');
 
 	var headElement = all.match(/(<link|<title|<meta).*/g);
 	var scriptElement =all.match(/.*<\/script>/g);
