@@ -19,15 +19,16 @@ if (html.length === 0){
 	var scriptLink =all.match(/<script.*<\/script>/g);
 	var page = pageName + '.html';
 	console.log(pageName + '.html was added!')
-
 	'<!DOCTYPE html>\n'.to(page);
 	'<head>\n'.toEnd(page);
-
-	for( var i=0; i< headElement.length; i++){
-		'\t'.toEnd(page);
-		headElement[i].toEnd(page);
-		'\n'.toEnd(page)
-	}
+    if (headElement) {
+        	for( var i=0; i< headElement.length; i++){
+                '\t'.toEnd(page);
+                headElement[i].toEnd(page);
+                '\n'.toEnd(page)
+            }
+     
+    }
 	'</head>'.toEnd(page);
 	'\n<body>\n'.toEnd(page);
 	'\n<body>'.toEnd(page);
